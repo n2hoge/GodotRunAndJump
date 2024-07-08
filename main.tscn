@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ry4wy07de7pp"]
+[gd_scene load_steps=4 format=3 uid="uid://ry4wy07de7pp"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_2s2ba"]
 [ext_resource type="PackedScene" uid="uid://h88gj3hv3xua" path="res://player.tscn" id="1_yh0y4"]
 [ext_resource type="PackedScene" uid="uid://b247gfhft15s6" path="res://floor.tscn" id="2_qphhm"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_2s2ba")
 
 [node name="Player" parent="." instance=ExtResource("1_yh0y4")]
 position = Vector2(146, 156)
@@ -16,3 +18,6 @@ position = Vector2(218, 493)
 
 [node name="Floor3" parent="." instance=ExtResource("2_qphhm")]
 position = Vector2(278, 493)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 320)

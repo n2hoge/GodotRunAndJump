@@ -23,18 +23,32 @@ func _update_anim(delta:float) -> void:
 	
 	if _is_jumping:
 		# ジャンプ中
+		if _cnt_jump == 1:
+			# 2段ジャンプできる時は前方宙返り
+			_spr.rotation_degrees += 1500 * delta
+		else:
+			_spr.rotation_degrees = 0
+			
 		_spr.frame = 2
 		return
 	
+	# 回転をリセット
+	_spr.rotation_degrees = 0
 	var t = int(_tAnim * ANIM_SPEED) % 2
 	var tbl = [2, 3] 			# 走りアニメーションのみ使う
 	_spr.frame = tbl[t]
 
 # 重力とジャンプ処理
 func _physics_process(delta: float) -> void:
+	# 移動速度を反映
+	velocity.x = _speed
 	
-	#重力を反映
+	# 重力を反映
 	velocity.y += GRAVITY
+	
+	# デバッグ用（画面外に出ないようにする）
+	if position.y > 680:
+		velocity.y = -1500
 	
 	if is_on_floor():
 		# 着地した

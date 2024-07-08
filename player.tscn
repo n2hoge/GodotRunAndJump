@@ -10,6 +10,7 @@ size = Vector2(20, 48)
 script = ExtResource("1_pyev5")
 
 [node name="Player" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_fdj8u")
 hframes = 8
 
